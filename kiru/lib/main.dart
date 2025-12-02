@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:kiru/loginScreen.dart';
+import 'package:kiru/login/loginScreen.dart';
 
 void main() {
   runApp(KiruApp());
@@ -11,6 +10,6 @@ class KiruApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(home: Loginscreen());
+    return CupertinoApp(home: LoginScreen());
   }
 }
