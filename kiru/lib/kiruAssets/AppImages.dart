@@ -6,4 +6,8 @@ class AppImages {
   static const String settings = 'assets/settingsIcon.png';
   static const String option = 'assets/Option.png';
   static const String profilePicture = 'assets/dummy/profilePicture.jpg';
+  static const String verifiedIcon = 'assets/verifiedIcon.svg';
+  static const String VerifiedIconPng = 'assets/VerifiedIconPng.png';
+  static const String telegramIcon = 'assets/telegramIcon.png';
+  static const String InstagramIcon = 'assets/InstagramIcon.png';
 }
