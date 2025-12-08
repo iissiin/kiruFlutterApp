@@ -110,17 +110,16 @@ class HomeScreen extends StatelessWidget {
                             // кнопкии
                             Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0,
+                                horizontal: 55.0,
                               ),
                               child: Row(
                                 children: [
                                   // Кнопка "Редактировать" (адаптивная ширина)
                                   Expanded(
-                                    flex: 2, // Занимает большую часть места
+                                    flex: 3,
                                     child: _buildButton(
                                       text: 'Редактировать',
-                                      backgroundColor: AppColors
-                                          .background, // Предполагаемый цвет фона
+                                      backgroundColor: AppColors.background,
                                       textColor: AppColors.black,
                                       onTap: () {
                                         // TODO: Логика редактирования
@@ -130,12 +129,11 @@ class HomeScreen extends StatelessWidget {
 
                                   const SizedBox(width: 10),
 
-                                  // Кнопка Телеграм (фиксированная ширина)
+                                  // Кнопка Телеграм
                                   Expanded(
-                                    flex: 1, // Занимает меньшую часть места
+                                    flex: 0,
                                     child: _buildSocialButton(
-                                      icon: AppImages
-                                          .telegramIcon, // Предполагаемая константа иконки
+                                      icon: AppImages.telegramIcon,
                                       onTap: () {
                                         // TODO: Логика перехода в Telegram
                                       },
@@ -144,18 +142,34 @@ class HomeScreen extends StatelessWidget {
 
                                   const SizedBox(width: 10),
 
-                                  // Кнопка Инстаграм (фиксированная ширина)
+                                  // Кнопка Инстаграм
                                   Expanded(
-                                    flex: 1, // Занимает меньшую часть места
+                                    flex: 0,
                                     child: _buildSocialButton(
-                                      icon: AppImages
-                                          .InstagramIcon, // Предполагаемая константа иконки
+                                      icon: AppImages.InstagramIcon,
                                       onTap: () {
                                         // TODO: Логика перехода в Instagram
                                       },
                                     ),
                                   ),
                                 ],
+                              ),
+                            ),
+
+                            const SizedBox(height: 10),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 38,
+                              ),
+                              child: Text(
+                                'Сотворю твой успех с помощью 100+ огненных образов. Моими капсулами пользуются более 2500 девушек — присоединяйся и ты!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: AppColors.black,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Inter',
+                                ),
                               ),
                             ),
 
@@ -230,16 +244,13 @@ class HomeScreen extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 40,
+        width: 40,
         decoration: BoxDecoration(
-          color: AppColors.background, // Предполагаемый цвет фона
-          borderRadius: BorderRadius.circular(14), // Закругление углов
+          color: AppColors.background,
+          borderRadius: BorderRadius.circular(14),
         ),
         alignment: Alignment.center,
-        child: Image.asset(
-          icon,
-          width: 20, // Размер иконки
-          height: 20,
-        ),
+        child: Image.asset(icon, width: 20, height: 20),
       ),
     );
   }
@@ -254,9 +265,10 @@ class HomeScreen extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(14), // Закругление углов
+          borderRadius: BorderRadius.circular(14),
         ),
         alignment: Alignment.center,
         child: Text(
