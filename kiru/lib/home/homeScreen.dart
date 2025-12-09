@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kiru/kiruAssets/AppImages.dart';
 import 'package:kiru/kiruAssets/colors.dart';
 
@@ -10,6 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
+        bottom: false,
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
@@ -44,8 +46,8 @@ class _TopBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(AppImages.settings, width: 24, height: 24),
-        Image.asset(AppImages.option, width: 24, height: 24),
+        SvgPicture.asset(AppImages.optionSVG, width: 24, height: 24),
+        SvgPicture.asset(AppImages.settingsSVG, width: 24, height: 24),
       ],
     );
   }
@@ -80,7 +82,7 @@ class _ProfileCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 6),
-                  Image.asset(AppImages.VerifiedIconPng, width: 16),
+                  SvgPicture.asset(AppImages.verifiedIcon, width: 16),
                 ],
               ),
 

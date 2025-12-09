@@ -20,4 +20,6 @@ class AppImages {
   static const String asset2 = 'assets/dummy/photo2.jpeg';
   static const String asset3 = 'assets/dummy/photo3.jpeg';
   static const String asset4 = 'assets/dummy/photo4.jpeg';
+  static const String settingsSVG = 'assets/SVGOptionIcon.svg';
+  static const String optionSVG = 'assets/SVGSettings-Small-icon.svg';
 }

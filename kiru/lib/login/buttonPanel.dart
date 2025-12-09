@@ -13,7 +13,9 @@ class ButtonsPanel extends StatelessWidget {
           width: double.infinity,
           height: 58,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/homepage');
+            },
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(AppColors.black),
             ),
@@ -28,7 +30,9 @@ class ButtonsPanel extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/homepage');
+          },
           child: Text(
             'Войти',
             style: TextStyle(
