@@ -22,4 +22,8 @@ class AppImages {
   static const String asset4 = 'assets/dummy/photo4.jpeg';
   static const String settingsSVG = 'assets/SVGOptionIcon.svg';
   static const String optionSVG = 'assets/SVGSettings-Small-icon.svg';
+  static const String hearticon = 'assets/navigationBar/hearticon.svg';
+  static const String homeicon = 'assets/navigationBar/homeicon.svg';
+  static const String shelficon = 'assets/navigationBar/shelficon.svg';
+  static const String usericon = 'assets/navigationBar/usericon.svg';
 }

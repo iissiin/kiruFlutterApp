@@ -6,4 +6,5 @@ class AppColors {
   static const Color buttonPrimaryText = Color(0xFFFFFFFF);
   static const Color pureWhite = Color(0xFFFFFFFF);
   static const Color buttonSecondaryText = Color(0xFF000000);
+  static const Color unselectedButton = Color(0xFF79828F);
 }

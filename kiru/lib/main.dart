@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kiru/home/homeScreen.dart';
+import 'package:flutter/material.dart';
+import 'package:kiru/favorite/favoriteScreen.dart';
+import 'package:kiru/navBar.dart';
+import 'package:kiru/profile/profileScreen.dart';
 import 'package:kiru/login/loginScreen.dart';
 
 void main() {
@@ -11,11 +14,11 @@ class KiruApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return MaterialApp(
       home: LoginScreen(),
       routes: {
         '/loginpage': (context) => const LoginScreen(),
-        '/homepage': (context) => const HomeScreen(),
+        '/homepage': (context) => const Navbar(),
       },
     );
   }

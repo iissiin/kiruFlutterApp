@@ -84,6 +84,10 @@ flutter:
     - assets/dummy/photo4.jpeg
     - assets/SVGOptionIcon.svg
     - assets/SVGSettings-Small-icon.svg
+    - assets/navigationBar/hearticon.svg
+    - assets/navigationBar/homeicon.svg
+    - assets/navigationBar/shelficon.svg
+    - assets/navigationBar/usericon.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
