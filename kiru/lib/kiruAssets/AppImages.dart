@@ -10,4 +10,14 @@ class AppImages {
   static const String VerifiedIconPng = 'assets/VerifiedIconPng.png';
   static const String telegramIcon = 'assets/telegramIcon.png';
   static const String InstagramIcon = 'assets/InstagramIcon.png';
+  static const String heart = 'assets/ermmmm/heart.svg';
+  static const String heartPNG = 'assets/ermmmm/heartPNG.png';
+  static const String plusIcon = 'assets/ermmmm/Plus-Icon-Intext.svg';
+  static const String plusIconPNG = 'assets/ermmmm/Plus-Icon-IntextPNG.png';
+  static const String unfilledHeart = 'assets/ermmmm/unfillHeart.svg';
+  static const String unfilledHeartPNG = 'assets/ermmmm/unfillHeartPNG.png';
+  static const String asset1 = 'assets/dummy/photo1.jpeg';
+  static const String asset2 = 'assets/dummy/photo2.jpeg';
+  static const String asset3 = 'assets/dummy/photo3.jpeg';
+  static const String asset4 = 'assets/dummy/photo4.jpeg';
 }

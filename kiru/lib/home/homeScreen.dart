@@ -10,200 +10,260 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
-        child: Column(
-          children: [
-            // ПАНЕЛЬ С КНОПКАМИ
-            SizedBox(
-              height: 64,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // TODO: кнопка настройки
-                      },
-                      child: Image.asset(
-                        AppImages.settings,
-                        width: 24,
-                        height: 24,
-                      ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 18),
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+
+              // ВЕРХНЯЯ ПАНЕЛЬ
+              _TopBar(),
+
+              const SizedBox(height: 50),
+
+              // КАРТОЧКА ПРОФИЛЯ
+              _ProfileCard(),
+
+              const SizedBox(height: 16),
+
+              // КАРТОЧКА ПОСТОВ
+              _PostsCard(),
+
+              const SizedBox(height: 30),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TopBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Image.asset(AppImages.settings, width: 24, height: 24),
+        Image.asset(AppImages.option, width: 24, height: 24),
+      ],
+    );
+  }
+}
+
+class _ProfileCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        // БЕЛЫЙ БЛОК
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.fromLTRB(16, 60, 16, 20),
+          decoration: BoxDecoration(
+            color: AppColors.pureWhite,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Column(
+            children: [
+              // Имя + галочка
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Akiyama Mizuki',
+                    style: TextStyle(
+                      color: AppColors.black,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        // TODO: кнопка options(три точки)
-                      },
-                      child: Image.asset(
-                        AppImages.option,
-                        width: 24,
-                        height: 24,
-                      ),
-                    ),
-                  ],
+                  ),
+                  const SizedBox(width: 6),
+                  Image.asset(AppImages.VerifiedIconPng, width: 16),
+                ],
+              ),
+
+              const SizedBox(height: 14),
+
+              // Статистика
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _Stat('3.8K', 'Подписчики'),
+                  _Stat('5.4K', 'Лайки'),
+                  _Stat('7', 'Публикации'),
+                ],
+              ),
+
+              const SizedBox(height: 16),
+
+              // Кнопки
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _BigButton(text: 'Редактировать', onTap: () {}),
+                  const SizedBox(width: 10),
+                  _SmallIcon(AppImages.telegramIcon),
+                  const SizedBox(width: 10),
+                  _SmallIcon(AppImages.InstagramIcon),
+                ],
+              ),
+
+              const SizedBox(height: 14),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28),
+                child: Text(
+                  'Mizuki is a moody person and is obsessed with cute things. They were captivated by the music Kanade Yoisaki composed and made videos using them. ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 13,
+                    height: 1.38,
+                    color: AppColors.black.withOpacity(0.85),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // АВАТАР
+        Positioned(
+          top: -45,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: Container(
+              width: 90,
+              height: 90,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: AppColors.pureWhite, width: 4),
+                image: const DecorationImage(
+                  image: AssetImage(AppImages.profilePicture),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-            // ПРОФИЛЬ БАННЕР
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Positioned(
-                      top: 45,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.pureWhite,
-                          borderRadius: BorderRadius.circular(14),
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 50),
-                            // имя профиля
-                            Align(
-                              alignment: Alignment.center,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 15),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Akiyama Mizuki',
-                                      style: TextStyle(
-                                        color: AppColors.black,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: "Inter",
-                                      ),
-                                    ),
-                                    SizedBox(width: 6),
-                                    Image.asset(
-                                      AppImages.VerifiedIconPng,
-                                      width: 12,
-                                      height: 12,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+class _Stat extends StatelessWidget {
+  final String value;
+  final String label;
 
-                            SizedBox(height: 10),
+  const _Stat(this.value, this.label);
 
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                _buildStatColumn('3.8K', 'Подписчики'),
-                                const SizedBox(width: 31),
-                                _buildStatColumn('5.4K', 'Лайки'),
-                                const SizedBox(width: 31),
-                                _buildStatColumn('7', 'Публикации'),
-                              ],
-                            ),
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w700,
+            color: AppColors.black,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            // ignore: deprecated_member_use
+            color: AppColors.black.withOpacity(0.45),
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-                            const SizedBox(height: 10),
+class _PostsCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.pureWhite,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Column(
+        children: [
+          _BigButton(
+            text: "Опубликовать",
+            icon: Image.asset(AppImages.plusIconPNG, width: 21),
+            onTap: () {},
+          ),
 
-                            // кнопкии
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 55.0,
-                              ),
-                              child: Row(
-                                children: [
-                                  // Кнопка "Редактировать" (адаптивная ширина)
-                                  Expanded(
-                                    flex: 3,
-                                    child: _buildButton(
-                                      text: 'Редактировать',
-                                      backgroundColor: AppColors.background,
-                                      textColor: AppColors.black,
-                                      onTap: () {
-                                        // TODO: Логика редактирования
-                                      },
-                                    ),
-                                  ),
+          const SizedBox(height: 16),
 
-                                  const SizedBox(width: 10),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: 6,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 0.75,
+            ),
+            itemBuilder: (_, index) {
+              final photos = [
+                AppImages.asset1,
+                AppImages.asset2,
+                AppImages.asset3,
+                AppImages.asset4,
+              ];
 
-                                  // Кнопка Телеграм
-                                  Expanded(
-                                    flex: 0,
-                                    child: _buildSocialButton(
-                                      icon: AppImages.telegramIcon,
-                                      onTap: () {
-                                        // TODO: Логика перехода в Telegram
-                                      },
-                                    ),
-                                  ),
+              return _PostItem(
+                image: photos[index % photos.length],
+                liked: index.isEven,
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-                                  const SizedBox(width: 10),
+class _BigButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onTap;
+  final Widget? icon;
 
-                                  // Кнопка Инстаграм
-                                  Expanded(
-                                    flex: 0,
-                                    child: _buildSocialButton(
-                                      icon: AppImages.InstagramIcon,
-                                      onTap: () {
-                                        // TODO: Логика перехода в Instagram
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+  const _BigButton({required this.text, required this.onTap, this.icon});
 
-                            const SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 38,
-                              ),
-                              child: Text(
-                                'Сотворю твой успех с помощью 100+ огненных образов. Моими капсулами пользуются более 2500 девушек — присоединяйся и ты!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: AppColors.black,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Inter',
-                                ),
-                              ),
-                            ),
-
-                            const SizedBox(height: 16),
-                            // TODO: остальной контент
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: Container(
-                          width: 90,
-                          height: 90,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: AppColors.pureWhite,
-                              width: 4,
-                            ),
-                            image: const DecorationImage(
-                              image: AssetImage(AppImages.profilePicture),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 42,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        decoration: BoxDecoration(
+          color: AppColors.background,
+          borderRadius: BorderRadius.circular(14),
+        ),
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) ...[icon!, const SizedBox(width: 8)],
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: AppColors.black,
               ),
             ),
           ],
@@ -211,75 +271,68 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildStatColumn(String value, String label) {
-    return Column(
+class _SmallIcon extends StatelessWidget {
+  final String icon;
+
+  const _SmallIcon(this.icon);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 42,
+      height: 42,
+      decoration: BoxDecoration(
+        color: AppColors.background,
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Center(child: Image.asset(icon, width: 20)),
+    );
+  }
+}
+
+// MARK: PHOTO
+class _PostItem extends StatelessWidget {
+  final String image;
+  final bool liked;
+
+  const _PostItem({required this.image, required this.liked});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: [
-        Text(
-          value,
-          style: TextStyle(
-            color: AppColors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(14),
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
           ),
         ),
-        Text(
-          label,
-          style: TextStyle(
-            // ignore: deprecated_member_use
-            color: AppColors.black.withOpacity(0.45),
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
+
+        Positioned(
+          bottom: 8,
+          right: 8,
+          child: Container(
+            width: 20,
+            height: 20,
+            decoration: BoxDecoration(
+              // ignore: deprecated_member_use
+              color: Colors.white.withOpacity(0.9),
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Image.asset(
+                liked ? AppImages.heartPNG : AppImages.unfilledHeartPNG,
+                width: 10,
+              ),
+            ),
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildSocialButton({
-    required String icon,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-          color: AppColors.background,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        alignment: Alignment.center,
-        child: Image.asset(icon, width: 20, height: 20),
-      ),
-    );
-  }
-
-  Widget _buildButton({
-    required String text,
-    required Color backgroundColor,
-    required Color textColor,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 40,
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: textColor,
-          ),
-        ),
-      ),
     );
   }
 }

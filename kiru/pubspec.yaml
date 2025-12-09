@@ -70,6 +70,17 @@ flutter:
     - assets/VerifiedIconPng.png
     - assets/telegramIcon.png
     - assets/InstagramIcon.png
+    - assets/ermmmm/heart.svg
+    - assets/ermmmm/heartPNG.png
+    - assets/ermmmm/Plus-Icon-Intext.svg
+    - assets/ermmmm/Plus-Icon-IntextPNG.png
+    - assets/ermmmm/unfillHeart.svg
+    - assets/ermmmm/unfillHeartPNG.png
+    - assets/dummy/photo1.jpeg
+    - assets/dummy/photo2.jpeg
+    - assets/dummy/photo3.jpeg
+    - assets/dummy/photo4.jpeg
+
  
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
