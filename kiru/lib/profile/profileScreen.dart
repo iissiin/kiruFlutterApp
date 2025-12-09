@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kiru/kiruAssets/AppImages.dart';
@@ -181,7 +183,6 @@ class _Stat extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            // ignore: deprecated_member_use
             color: AppColors.black.withOpacity(0.45),
           ),
         ),
@@ -219,7 +220,7 @@ class _PostsCard extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
-              childAspectRatio: 0.75,
+              mainAxisExtent: 240,
             ),
             itemBuilder: (_, index) {
               final photos = [
@@ -328,7 +329,6 @@ class _PostItem extends StatelessWidget {
             width: 20,
             height: 20,
             decoration: BoxDecoration(
-              // ignore: deprecated_member_use
               color: Colors.white.withOpacity(0.9),
               shape: BoxShape.circle,
             ),

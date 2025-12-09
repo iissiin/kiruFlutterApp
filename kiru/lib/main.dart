@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kiru/favorite/favoriteScreen.dart';
 import 'package:kiru/navBar.dart';
-import 'package:kiru/profile/profileScreen.dart';
 import 'package:kiru/login/loginScreen.dart';
 
 void main() {

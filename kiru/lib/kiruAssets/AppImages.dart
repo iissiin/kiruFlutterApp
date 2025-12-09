@@ -26,4 +26,5 @@ class AppImages {
   static const String homeicon = 'assets/navigationBar/homeicon.svg';
   static const String shelficon = 'assets/navigationBar/shelficon.svg';
   static const String usericon = 'assets/navigationBar/usericon.svg';
+  static const String searchicon = 'assets/Search-icon.svg';
 }
