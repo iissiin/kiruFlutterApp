@@ -18,11 +18,11 @@ class FavoritesScreen extends StatelessWidget {
 
             // ВЕРХНЯЯ ПАНЕЛЬ
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              padding: const EdgeInsets.only(bottom: 18, right: 18, left: 18),
               child: _TopBar(),
             ),
 
-            const SizedBox(height: 43),
+            // const SizedBox(height: 43),
 
             // GRID ФОТОК
             Expanded(
@@ -63,29 +63,32 @@ class _TopBar extends StatelessWidget {
 class _PostsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: 6,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        mainAxisExtent: 240,
-      ),
-      itemBuilder: (_, index) {
-        final photos = [
-          AppImages.asset1,
-          AppImages.asset2,
-          AppImages.asset3,
-          AppImages.asset4,
-        ];
+    return Padding(
+      padding: const EdgeInsets.only(top: 25.0),
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: 6,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
+          mainAxisExtent: 240,
+        ),
+        itemBuilder: (_, index) {
+          final photos = [
+            AppImages.asset1,
+            AppImages.asset2,
+            AppImages.asset3,
+            AppImages.asset4,
+          ];
 
-        return _PostItem(
-          image: photos[index % photos.length],
-          liked: index.isEven,
-        );
-      },
+          return _PostItem(
+            image: photos[index % photos.length],
+            liked: index.isEven,
+          );
+        },
+      ),
     );
   }
 }
