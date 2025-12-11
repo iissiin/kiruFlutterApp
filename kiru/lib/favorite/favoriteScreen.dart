@@ -9,7 +9,7 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.pureWhite,
       body: SafeArea(
         bottom: false,
         child: Column(
