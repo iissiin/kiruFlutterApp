@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kiru/login/registerScreen.dart';
 import 'package:kiru/navBar.dart';
 import 'package:kiru/login/loginScreen.dart';
 
@@ -16,6 +17,7 @@ class KiruApp extends StatelessWidget {
       home: LoginScreen(),
       routes: {
         '/loginpage': (context) => const LoginScreen(),
+        '/registerpage': (context) => const registerScreen(),
         '/homepage': (context) => const Navbar(),
       },
     );

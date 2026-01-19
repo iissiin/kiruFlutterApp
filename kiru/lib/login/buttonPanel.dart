@@ -14,7 +14,7 @@ class ButtonsPanel extends StatelessWidget {
           height: 58,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/homepage');
+              Navigator.pushNamed(context, '/registerpage');
             },
             style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(AppColors.black),
