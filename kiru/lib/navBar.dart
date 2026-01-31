@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kiru/home/homeScreen.dart';
+import 'package:kiru/home/ui/homeScreen.dart';
 import 'package:kiru/kiruAssets/appImages.dart';
 import 'package:kiru/kiruAssets/colors.dart';
 import 'package:kiru/profile/profileScreen.dart';
